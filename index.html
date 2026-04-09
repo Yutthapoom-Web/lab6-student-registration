@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>ลงทะเบียนนักศึกษา - Lab 6</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ตั้งค่าให้ทั้งหน้าเว็บใช้ฟอนต์ Kanit */
+        body { font-family: 'Kanit', sans-serif; }
+    </style>
+</head>
+
+<body class="bg-gray-100">
+
+    <nav class="bg-white p-4 shadow-md sticky top-0 flex justify-between items-center">
+        <b class="text-blue-600 text-xl">LAB 6</b>
+        <button class="bg-blue-600 text-white px-4 py-1 rounded-md hover:bg-blue-700">ลงทะเบียน</button>
+    </nav>
+
+    <div class="container mx-auto p-8 flex justify-center">
+        
+        <div id="form-card" class="bg-white p-6 rounded-lg shadow-md w-full max-w-md">
+            <h2 class="text-xl font-bold mb-4 text-center">กรอกข้อมูลนักศึกษา</h2>
+
+            <form id="student-form">
+                <div class="mb-3">
+                    <label class="block">ชื่อ-นามสกุล</label>
+                    <input type="text" id="name" required class="w-full border p-2 rounded focus:ring-2 focus:ring-blue-400 outline-none">
+                </div>
+
+                <div class="mb-3">
+                    <label class="block">รหัสนักศึกษา</label>
+                    <input type="text" id="id" required class="w-full border p-2 rounded focus:ring-2 focus:ring-blue-400 outline-none">
+                </div>
+
+                <div class="mb-3 text-sm grid grid-cols-2 gap-2">
+                    <div>
+                        <label class="block">คณะ/สาขา</label>
+                        <input type="text" required class="w-full border p-2 rounded">
+                    </div>
+                    <div>
+                        <label class="block">อีเมล</label>
+                        <input type="email" required class="w-full border p-2 rounded">
+                    </div>
+                </div>
+
+                <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 mt-4">
+                    ยืนยันการลงทะเบียน
+                </button>
+            </form>
+        </div>
+
+        <div id="result-page" class="hidden bg-white p-10 rounded-lg shadow-md text-center">
+            <h1 class="text-2xl text-green-600 font-bold">ลงทะเบียนสำเร็จ!</h1>
+            <p class="text-gray-500 mt-2">ขอบคุณที่ส่งข้อมูลครับ</p>
+        </div>
+
+    </div>
+
+    <script>
+        // สร้างตัวแปรมาเก็บส่วนที่เราต้องใช้
+        const myForm = document.getElementById('student-form');
+        const formCard = document.getElementById('form-card');
+        const resultPage = document.getElementById('result-page');
+
+        // เมื่อกดปุ่มส่งในฟอร์ม
+        myForm.addEventListener('submit', function(event) {
+            // หยุดการรีโหลดหน้าจอ (สำคัญมาก)
+            event.preventDefault(); 
+
+            // สลับการมองเห็น: ซ่อนฟอร์ม แล้วแสดงข้อความสำเร็จ
+            formCard.classList.add('hidden');
+            resultPage.classList.remove('hidden');
+        });
+    </script>
+
+</body>
+</html>
